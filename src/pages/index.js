@@ -46,8 +46,19 @@ function useFetch(term, defaultData) {
   return data
 }
 
-let playSample = (voice) => {
-  document.getElementById(`voice-${voice}`).play();
+let playSample = (voice, provider) => {
+
+  let url = `/audio/${voice}.${provider == 'amazon' ?'mp3':'ogg'}`,
+    audio = new Audio( url ),
+    audio_promise = audio.play();
+
+  if (audio_promise !== undefined) {
+    audio_promise.then(function() {
+      
+    }).catch(function(error) {
+      console.log('no sample');
+    });
+  }
 }
 
 
@@ -60,16 +71,16 @@ export default () => {
 
   return (
     <>    
-      <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-        <div class="container">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div className="container">
           
-          <a class="navbar-brand" href="#">
+          <a className="navbar-brand" href="#">
             <img src="/img/face_200.png" style={{"width" : "37px" }} alt="Responsive image" />  talkbot
           </a>
 
-          <div class="" id="navbarNavDropdown">
-            <form class="form-inline">
-              <input  class="form-control" type="search" placeholder="Search" aria-label="Search" value={search} onChange={evt => setSearch(evt.target.value)} />
+          <div className="" id="navbarNavDropdown">
+            <form className="form-inline">
+              <input  className="form-control" type="search" placeholder="Search" aria-label="Search" value={search} onChange={evt => setSearch(evt.target.value)} />
             </form>
           </div>
         </div>
@@ -79,8 +90,8 @@ export default () => {
       
       <div className="bg-dark">
         <div className="container">
-          <div class="table-responsive-md">
-            <table class="table table-dark table-hover table-sm header-fixed">
+          <div className="table-responsive-md">
+            <table className="table table-dark table-hover table-sm header-fixed">
               <thead>
                 <tr>
 
@@ -98,17 +109,11 @@ export default () => {
                     <tr key={item.voice}>
                       <td className={cols}>
                         {item.provider}
-                        
-                        <audio id={`voice-${item.voice}`}>
-                          <source src={`/audio/${item.voice}.ogg`} type="audio/ogg" />
-                          <source src={`/audio/${item.voice}.mp3`} type="audio/mp3" />
-                        </audio>
-
                       </td>
                       <td>
                         <button 
-                            class="btn sound-button"
-                            onClick={ () => playSample(item.voice) }>
+                            className="btn sound-button"
+                            onClick={ () => playSample(item.voice, item.provider) }>
                             🔊
                           </button>
                           <code>!myvoice {item.voice}</code>
