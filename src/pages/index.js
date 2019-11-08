@@ -100,7 +100,7 @@ export default () => {
                   <th scope="col">Gender</th>
                   
                   <th scope="col">Language</th>
-                  <th scope="col" className={colmds}>Native</th>
+                  <th scope="col" className={colmds}>-</th>
                 </tr>
               </thead>
               <tbody>
