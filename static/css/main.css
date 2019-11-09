@@ -10,9 +10,13 @@
 }
 
 .sound-button:focus {
-  outline:0;
+  outline: 0;
 }
 
-.sound-button{
+.sound-button {
   padding: 0px 3px 2px 3px;
+}
+
+.tb-logo {
+  vertical-align: sub;
 }
