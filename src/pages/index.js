@@ -161,7 +161,7 @@ export default () => {
 
                   <th scope="col" className={cols}>Provider</th>
                   <th scope="col"></th>
-                  <th scope="col">voice</th>
+                  <th scope="col">Voice</th>
                   <th scope="col">
                     <span className={smallOnly}><span className="font-weight-normal">⚤</span></span>
                     <span className={bigOnly}>Gender </span>
