@@ -20,3 +20,18 @@
 .tb-logo {
   vertical-align: sub;
 }
+
+.tb-p {
+  height: 25px;
+  margin-right: 15px;
+  vertical-align: sub;
+  margin-bottom: -18px;
+}
+
+.navbar .row {
+  width: 100%;
+}
+
+.navbar input {
+  margin-top: 5px;
+}

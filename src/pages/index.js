@@ -104,24 +104,51 @@ export default () => {
 
     <Helmet>
       <meta charSet="utf-8" />
-      <title>Talkbot Voices: the talkboting</title>
+      <title>Talkbot voice database: the talkboting</title>
       <link rel="canonical" href="https://voices.talkbot.dev" />
       <meta property="og:description" 
         content="Customise your voice for talkbot!" />
     </Helmet>
 
-      <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top pr-0">
         <div className="container">
           
-          <a className="navbar-brand" href="https://nullabork.gitbook.io/talkbot">
-            <h3><img src="/img/face_200.png" className="tb-logo" style={{"width" : "37px" }} alt="Talkbot logo" />  talkbot</h3>
-          </a>
 
-          <div className="" id="navbarNavDropdown">
-            <form className="form-inline">
+
+        
+          {
+          //   <div className="" id="navbarNavDropdown">
+          //   <form className="form-inline">
+          //     <a href="https://www.patreon.com/bePatron?u=17524649">
+          //       <img src="/img/patreon_logo.svg" className="tb-p"  alt="Talkbot logo" /> 
+          //     </a>
+              
+          //   </form>
+          // </div>
+          }
+
+          <div class="row">
+            <div className="col-6 col-md">
+              <a className="navbar-brand" href="https://nullabork.gitbook.io/talkbot">
+                <h3 className="p-0 m-0"><img src="/img/face_200.png" className="tb-logo" style={{"width" : "37px" }} alt="Talkbot logo" />  talkbot</h3>
+              </a>
+            </div>
+            <div className="text-right col-6 col-md-auto p-0 m-0 align-middle">
+              <a href="https://www.patreon.com/bePatron?u=17524649">
+                <img src="/img/patreon.png" className="tb-p"  alt="Support us" /> 
+              </a>
+
+              <a href="https://github.com/nullabork/talkbot">
+                <img src="/img/github.png" className="tb-p"  alt="Support us" /> 
+              </a>
+            </div>
+            <div className="col-12 col-md-auto p-md-0 m-md-0 align-middle">
               <input  className="form-control" type="search" placeholder="Search" aria-label="Search" value={search} onChange={evt => setSearch(evt.target.value)} />
-            </form>
+            </div>
           </div>
+
+
+
         </div>
       </nav>
       
