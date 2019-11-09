@@ -31,20 +31,16 @@ function useFetch(term, setSearch) {
   useEffect(() => {
 
     let p = new URLSearchParams(window.location.search),
-      startState = "";
+      startState = term;
 
-    if(p.has('find')) {
+    if(p.has('find') && !startState) {
       startState = p.get('find');
-    }
-
-    if(!term) {
-      term = startState;
     }
     
 
     let results = voice.filter((item) => {
       
-      for (const searchTerm of term.split(" ")) {
+      for (const searchTerm of startState.split(" ")) {
         var toSearch = JSON.stringify(item).toLowerCase();
         if(toSearch.indexOf(searchTerm.toLowerCase()) === -1) return false;
       }
@@ -91,11 +87,9 @@ export default () => {
   useEffect(() => {
     let p = new URLSearchParams(window.location.search);
 
-  if(window.localStorage['chr']) {
-    chr = window.localStorage['chr'];
-}
-
-
+    if(window.localStorage['chr']) {
+      chr = window.localStorage['chr'];
+    }
 
     if(p.has('chr')) {
       chr = p.get('chr');
@@ -103,16 +97,8 @@ export default () => {
     }    
   });
   
-
-  
   const result = useFetch(search, []);
 
-
-  
-
-
-
-  
   return (
     <>
 
@@ -169,11 +155,11 @@ export default () => {
                         <button 
                             className="btn sound-button"
                             onClick={ () => playSample(item.voice, item.provider) }>
-                            <span  role="img" aria-label={`play ${item.voice}, ${item.language} sample audio`}>🔊</span>
+                            <span  role="img" aria-label={`play ${item.voice_alias || item.voice}, ${item.language} sample audio`}>🔊</span>
                           </button>
                       </td>
                       <td className="text-nowrap">
-                          <code>{chr}myvoice {item.voice}</code>
+                          <code>{chr}myvoice {item.voice_alias || item.voice}</code>
                       </td>
                       <td>
                         <span className={bigOnly}>{item.gender}</span>
