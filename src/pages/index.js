@@ -120,7 +120,7 @@ export default () => {
 
     <Helmet>
       <meta charSet="utf-8" />
-      <title>Talkbqt voice database: the talkboting</title>
+      <title>Talkbot voice database: the talkboting</title>
       <link rel="canonical" href="https://voices.talkbot.dev" />
       <meta property="og:description" 
         content="Customise your voice for talkbot!" />
@@ -128,9 +128,6 @@ export default () => {
 
       <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top pr-0">
         <div className="container">
-          
-
-
         
           {
           //   <div className="" id="navbarNavDropdown">
