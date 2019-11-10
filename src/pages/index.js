@@ -128,7 +128,7 @@ export default () => {
 
       <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top pr-0">
         <div className="container">
-        
+
           {
           //   <div className="" id="navbarNavDropdown">
           //   <form className="form-inline">
@@ -155,7 +155,7 @@ export default () => {
                 <img src="/img/github.png" className="tb-p"  alt="Find us on github" /> 
               </a>
             </div>
-            <div className="col-12 col-md-auto p-md-0 m-md-0 align-middle">
+            <div className="col-12 col-md-auto pr-0 mr-0 align-middle">
               <input  className="form-control" type="search" placeholder="Search" aria-label="Search" value={search} onChange={evt => setSearch(evt.target.value)} />
             </div>
           </div>
