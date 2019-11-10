@@ -57,6 +57,10 @@ typings/
 # gatsby files
 .cache/
 
+# gatsby files
+build/
+deploy/log
+
 # Mac files
 .DS_Store
 

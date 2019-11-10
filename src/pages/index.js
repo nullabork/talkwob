@@ -11,6 +11,20 @@ import '../../static/css/main.css';
 
 let voice = [].concat(voiceGoogle, voiceAmazon);
 
+let URLParams = function (searchString) {
+  var self = this;
+  self.searchString = searchString;
+  self.get = function (name) {
+      var results = new RegExp('[?&]' + name + '=([^&#]*)').exec(self.searchString);
+      if (results == null) {
+          return null;
+      }
+      else {
+          return decodeURI(results[1]) || 0;
+      }
+  };
+}
+
 for (const v of voice) {
   let code = v.code.toLowerCase().split('-')[0];
  
@@ -30,11 +44,12 @@ function useFetch(term, setSearch) {
 
   useEffect(() => {
 
-    let p = new URLSearchParams(window.location.search),
-      startState = term;
+    let p = new URLParams(window.location.search),
+      startState = p.get('find') || "";
+      
 
-    if(p.has('find') && !startState) {
-      startState = p.get('find');
+    if(term) {
+      startState = term;
     }
     
 
@@ -85,15 +100,16 @@ export default () => {
   const [search, setSearch] = useState(startState);
 
   useEffect(() => {
-    let p = new URLSearchParams(window.location.search);
+    let p = new URLParams(window.location.search),
+      pchr = p.get('chr');
 
     if(window.localStorage['chr']) {
       chr = window.localStorage['chr'];
     }
 
-    if(p.has('chr')) {
-      chr = p.get('chr');
-      window.localStorage['chr'] = chr;
+    if(pchr) {
+      chr = pchr;
+      window.localStorage['chr'] = pchr;
     }    
   });
   
@@ -104,7 +120,7 @@ export default () => {
 
     <Helmet>
       <meta charSet="utf-8" />
-      <title>Talkbot voice database: the talkboting</title>
+      <title>Talkbqt voice database: the talkboting</title>
       <link rel="canonical" href="https://voices.talkbot.dev" />
       <meta property="og:description" 
         content="Customise your voice for talkbot!" />
@@ -127,7 +143,7 @@ export default () => {
           // </div>
           }
 
-          <div class="row">
+          <div className="row">
             <div className="col-6 col-md">
               <a className="navbar-brand" href="https://nullabork.gitbook.io/talkbot">
                 <h3 className="p-0 m-0"><img src="/img/face_200.png" className="tb-logo" style={{"width" : "37px" }} alt="Talkbot logo" />  talkbot</h3>
@@ -139,7 +155,7 @@ export default () => {
               </a>
 
               <a href="https://github.com/nullabork/talkbot">
-                <img src="/img/github.png" className="tb-p"  alt="Support us" /> 
+                <img src="/img/github.png" className="tb-p"  alt="Find us on github" /> 
               </a>
             </div>
             <div className="col-12 col-md-auto p-md-0 m-md-0 align-middle">
@@ -195,7 +211,6 @@ export default () => {
                       <td className="text-nowrap">{item.language}</td>
                       <td className={colmds}>{item.nativeName}</td>
                     </tr>
-
                   ))
                 }
               </tbody>
