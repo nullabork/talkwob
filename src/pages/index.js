@@ -91,17 +91,21 @@ let smallOnly = 'd-block d-sm-block d-xs-block d-md-none',
   cols = 'd-none d-sm-none d-xs-none d-md-block',
   bigOnly = cols,
   colmds = 'd-none d-sm-none d-xs-none d-md-none d-lg-block',
-  startState = "",
   chr = "!";
   
 
 export default () => {
 
-  const [search, setSearch] = useState(startState);
-
+  const [search, setSearch] = useState(null);
+  
+  
   useEffect(() => {
     let p = new URLParams(window.location.search),
       pchr = p.get('chr');
+    
+    if(search == null){
+      setSearch(p.get('find') || "");
+    }
 
     if(window.localStorage['chr']) {
       chr = window.localStorage['chr'];
@@ -110,8 +114,9 @@ export default () => {
     if(pchr) {
       chr = pchr;
       window.localStorage['chr'] = pchr;
-    }    
+    }
   });
+
   
   const result = useFetch(search, []);
 
@@ -156,7 +161,7 @@ export default () => {
               </a>
             </div>
             <div className="col-12 col-md-auto pr-0 mr-0 align-middle">
-              <input  className="form-control" type="search" placeholder="Search" aria-label="Search" value={search} onChange={evt => setSearch(evt.target.value)} />
+              <input  className="form-control" type="search" placeholder="Search" aria-label="Search" value={search} onChange={evt => setSearch(evt.target.value || " ")} />
             </div>
           </div>
 
@@ -165,6 +170,8 @@ export default () => {
         </div>
       </nav>
       
+
+
       <div className="bg-dark">
         <div className="container">
           <div className="table-responsive-sm table-responsive-xs table-responsive">
@@ -215,6 +222,15 @@ export default () => {
           </div>
         </div>
       </div>
+
+      {
+        !result.length?(
+          <p class="text-center mt-5">
+            <h1>No voices matching <code>{search}</code></h1>
+          </p>
+        ): null
+      }
+
     </>
   );
 }
