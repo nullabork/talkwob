@@ -224,7 +224,7 @@ export default () => {
       </div>
 
       {
-        !result.length?(
+        !result.length && search?(
           <p class="text-center mt-5">
             <h1>No voices matching <code>{search}</code></h1>
           </p>
