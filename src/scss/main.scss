@@ -1,0 +1,65 @@
+@import "~bootstrap/scss/bootstrap";
+
+.button.play {
+  width: 11px;
+  height: 11px;
+  border-style: solid;
+  border-width: 5px 0px 5px 11px;
+  background: none;
+  border-color: transparent transparent transparent white;
+  box-sizing: border-box;
+  vertical-align: super;
+}
+
+.sound-button:focus {
+  outline: 0;
+}
+
+.sound-button {
+  padding: 0px 3px 2px 3px;
+}
+
+.tb-logo {
+  vertical-align: sub;
+}
+
+.tb-p {
+  height: 25px;
+  margin-left: 15px;
+  vertical-align: sub;
+  margin-bottom: -18px;
+}
+
+.navbar .row {
+  width: 100%;
+}
+
+.navbar input {
+  margin-top: 5px;
+}
+
+pre {
+  display: block;
+  font-size: initial;
+  margin: 0;
+
+  code {
+    font-size: 87.5%;
+    color: #e83e8c;
+    word-wrap: break-word;
+  }
+}
+
+.clipWrapper {
+  button {
+    margin-top: -2px;
+    
+    &:active {
+      background: #777 !important;
+    }
+    
+    span {
+      display: none;
+    }
+  }
+}

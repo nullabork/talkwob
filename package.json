@@ -1,34 +1,34 @@
 {
-  "name": "gatsby-starter-hello-world",
-  "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
-  "version": "0.1.0",
-  "license": "MIT",
+  "name": "talkweb2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "start": "npx parcel src/index.html --out-dir public",
+    "build": "npx parcel build src/index.html --out-dir public",
+    "deploy": "sh ./bin/deployENV.sh production"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-nuke-dist": "^1.0.1",
+    "sass": "^1.24.4"
   },
   "dependencies": {
-    "gatsby": "^2.17.6",
-    "gatsby-plugin-manifest": "^2.2.26",
-    "gatsby-plugin-react-helmet": "^3.1.13",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
-    "react-helmet": "^5.2.1",
-    "sync-request": "^6.1.0"
+    "bootstrap": "^4.4.1",
+    "clipboard-copy": "^3.1.0",
+    "highlight.js": "^9.17.1",
+    "jquery": "^3.4.1",
+    "parcel-plugin-copy": "^1.0.2",
+    "popper.js": "^1.16.0",
+    "react": "^16.12.0",
+    "react-copy-code": "^2.1.2",
+    "react-dom": "^16.12.0",
+    "styled-components": "^4.4.1"
   },
-  "devDependencies": {
-    "prettier": "^1.18.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  "staticPath": {
+    "source": "./src/assets",
+    "target": "./public/assets"
   }
 }
