@@ -75,15 +75,8 @@ function useFetch(term, setSearch) {
 }
 
 let playSample = (voice, provider) => {
-  let url = `/assets/audio/${voice}.ogg`;
-
-  if (provider == 'amazon') {
-    url = `/assets/audio/${voice}.mp3`
-  } else if(provider == 'azure') {
-    url = `/assets/audio/${voice}.mp3`
-  }
-    
-
+  
+  let url = `/assets/audio/${voice}.mp3`;
 
   let audio = new Audio( url ),
     audio_promise = audio.play();
